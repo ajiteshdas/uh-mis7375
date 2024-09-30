@@ -1,0 +1,492 @@
+
+<!-- Name: Ajitesh Shankar Das
+Name: Ajitesh Shankar Das
+PSID: 2415523
+Name of file: homework1.html
+Date created: 19th Aug 2024
+Date updated: 20th September 2024
+Description: This is an html file to show a registration form. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Title of the web page -->
+		<title>Adjecta Medical</title>
+
+		<!-- Character encoding set to UTF-8 -->
+		<meta charset="UTF-8">
+
+		<!-- Ensures the web page is responsive on all device sizes -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Link to an external icon for the webpage tab -->
+		<link rel="icon" type="image/x-icon" href="noun-medical-6182322.svg">
+
+		<!-- Link to external CSS file for styling the page -->
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+	<body>
+		<!-- Main container for the webpage content -->
+		<div id='main'>
+
+			<!-- Table to hold the header section with logo, title, and date -->
+			<table id='header'>
+				<tr>
+				<!-- Logo image for Adjecta Medical -->
+				<td width="25%">
+					<img src="Caduceus_large.png" alt="Caduceus_1924" style="white-space: nowrap;">
+				</td>
+				<!-- Title of the medical center -->
+				<td text-align="left">
+					<h1>Adjecta Medical</h1>
+				</td>
+				<!-- Area to display the current date, aligned to the right -->
+				<td align='right' valign="bottom">
+					<p id='date'></p>
+				</td>
+				</tr>
+			</table>
+
+			<!-- Welcome message to the user -->
+			<p><i>Welcome to Adjecta Medical Center. Before we can schedule you with our healthcare professional, kindly fill out the information below.</i></p>
+		<hr>
+
+		<!-- Start of the form for user registration -->
+		<form>
+			<!-- Section for personal information fields -->
+			<table id='section1'>
+				<tr>
+					<!-- Message indicating mandatory fields -->
+					<td colspan=5 style="text-align:right;"><span class='mandatory'>*</span>Mandatory fields</td>
+				</tr>
+				<!-- First Name, Middle Initial, and Last Name input fields -->
+				<tr>
+					<!-- First Name input with validation for alphabet characters -->
+				<td>
+					<label for='firstname'>First Name:<span class='mandatory'>*</span></label>
+				</td>
+				<td><input type='text' id='firstname' name='firstname' maxlength="30" required pattern="[a-zA-Z]+" title='Enter only alphabets' placeholder="e.g. John"> 
+					<!-- how to use "maxlength", https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength--></td>
+				<td></td>
+				<!-- Middle Initial input, optional -->
+				<td>
+					<label for='middleinit'>Middle Initial:</label>
+					<input id='middleinit' type='text' name='middleinit' maxlength="1" size="2">
+				</td>
+				<!-- Last Name input with validation for alphabet characters -->
+					<td>
+						<label for='lastname'>Last Name:<span class='mandatory'>*</span></label>
+					<input id='lastname' type='text' name='lastname' maxlength="30" required pattern="[a-zA-Z]+" title='Enter only alphabets' placeholder='e.g. Doe'>
+				</td>
+			</tr>
+			<!-- Date of Birth field -->
+			<tr>
+				<td>
+					<label for='dob'>Date of Birth:<span class='mandatory'>*</span></label>	
+				</td>
+			
+				<td>
+					<input id='dob' type="date" name="dob" min='1920-01-01' required>
+				</td>
+			</tr>
+			<!-- Social Security Number (SSN) input with password masking -->
+			<tr>
+				<td>
+				<label for="ssn">Enter your SSN:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input id='ssn' type="password" name="ssn" maxlength="11" placeholder="XXX-XX-XXXX">
+				</td>
+				<td></td>
+			</tr>
+			<!-- Address fields: Address Line 1 (mandatory) and Address Line 2 (optional) -->
+			<tr>
+				<td>
+					<label for='addr1'>Address Line 1:<span class='mandatory'>*</span></label>
+				</td>
+				<td colspan='3'>
+					<input id='addr1' type="text" maxlength="30" name="addr1" placeholder="Street Address, PO Box etc." required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for='addr2'>Address Line 2:</label>
+				</td>
+				<td colspan="3">
+					<input id='addr2' type="text" maxlength="30" name="addr2" placeholder="Optional - Apt No., Suite, Unit,">
+				</td>
+			</tr>
+			<!-- City, State, and Zipcode inputs -->
+			<tr>
+				<td>
+					<label for="city">City:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input id='city' type='text' maxlength="30" name='city' required pattern="[a-zA-Z ]+" title='Enter only alphabets' placeholder="e.g. Houston">
+				</td>
+				<td>
+					<label for='state'>State:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+				<!-- Dropdown for selecting a state -->
+				<!--State list from https://www.faa.gov/air_traffic/publications/atpubs/cnt_html/appendix_a.html including overseas territories-->
+				<!--HTML select tag from W3 schools-->
+				<!-- generated the option values list using concantenate in MS Excel-->
+			<select id='state' name='state' required>
+				<!-- List of U.S. states -->
+				<option value='' disabled selected>Select State</option> 
+				<option value='AL'>Alabama, AL</option>
+				<option value='AK'>Alaska, AK</option>
+				<option value='AZ'>Arizona, AZ</option>
+				<option value='AR'>Arkansas, AR</option>
+				<option value='CA'>California, CA</option>
+				<option value='CO'>Colorado, CO</option>
+				<option value='CT'>Connecticut, CT</option>
+				<option value='DE'>Delaware, DE</option>
+				<option value='DC'>District of Columbia, DC</option>
+				<option value='FL'>Florida, FL</option>
+				<option value='GA'>Georgia, GA</option>
+				<option value='HI'>Hawaii, HI</option>
+				<option value='ID'>Idaho, ID</option>
+				<option value='IL'>Illinois, IL</option>
+				<option value='IN'>Indiana, IN</option>
+				<option value='IA'>Iowa, IA</option>
+				<option value='KS'>Kansas, KS</option>
+				<option value='KY'>Kentucky, KY</option>
+				<option value='LA'>Louisiana, LA</option>
+				<option value='ME'>Maine, ME</option>
+				<option value='MD'>Maryland, MD</option>
+				<option value='MA'>Massachusetts, MA</option>
+				<option value='MI'>Michigan, MI</option>
+				<option value='MN'>Minnesota, MN</option>
+				<option value='MS'>Mississippi, MS</option>
+				<option value='MO'>Missouri, MO</option>
+				<option value='MT'>Montana, MT</option>
+				<option value='NE'>Nebraska, NE</option>
+				<option value='NV'>Nevada, NV</option>
+				<option value='NH'>New Hampshire, NH</option>
+				<option value='NJ'>New Jersey, NJ</option>
+				<option value='NM'>New Mexico, NM</option>
+				<option value='NY'>New York, NY</option>
+				<option value='NC'>North Carolina, NC</option>
+				<option value='ND'>North Dakota, ND</option>
+				<option value='OH'>Ohio, OH</option>
+				<option value='OK'>Oklahoma, OK</option>
+				<option value='OR'>Oregon, OR</option>
+				<option value='PA'>Pennsylvania, PA</option>
+				<option value='RI'>Rhode Island, RI</option>
+				<option value='SC'>South Carolina, SC</option>
+				<option value='SD'>South Dakota, SD</option>
+				<option value='TN'>Tennessee, TN</option>
+				<option value='TX'>Texas, TX</option>
+				<option value='UT'>Utah, UT</option>
+				<option value='VA'>Virginia, VA</option>
+				<option value='WA'>Washington, WA</option>
+				<option value='WV'>West Virginia, WV</option>
+				<option value='WI'>Wisconsin, WI</option>
+				<option value='WY'>Wyoming, WY</option>
+				<option disabled>----Other U.S. Territories----</option>
+				<option value='AS'>American Samoa, AS</option>
+				<option value='GU'>Guam, GU</option>
+				<option value='MP'>Northern Mariana Islands, MP</option>
+				<option value='PR'>Puerto Rico, PR</option>
+				<option value='TT'>Trust Territories, TT</option>
+				<option value='VI'>Virgin Islands, VI</option>
+			</select>
+			<!-- Zipcode input with formatting -->
+			<td style='text-align: right;'>
+			<label for="zip">Zipcode:<span class='mandatory'>*</span></label>
+			<input type="text" id="zip" name="zip" maxlength="10" placeholder="XXXXX-XXXX" required>
+		</td>
+	</tr>
+			<!-- Email and Phone Number inputs -->
+			<tr>
+				<td>
+					<label for='email'>Email:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input type="Email" id='email' name="email" maxlength="30" placeholder="abc@example.com" required>
+				</td>
+				
+			</tr>
+			<tr>
+				<td>
+					<label for='phone1'>Phone Number:</label>
+				</td>
+				<td>
+					<input type="text" id='phone1' name="phone1" placeholder="XXX-XXX-XXXX" minlength="12" maxlength="12">
+				</td>
+				
+			</tr>
+		</table>
+			<hr>
+			<!-- Additional questions related to the user's symptoms, medical history, and insurance -->
+			<p><i>Kindly answer the questions below.</i></p>
+			<hr>
+			<!-- Textarea for describing symptoms -->
+			<p>1. Describe your symptoms. <span class='mandatory'>*</span></p>
+			<table>
+				<tr>
+					<td><textarea name='symptoms' placeholder="Please elaborate your symptoms with as much detail as possible." rows="4" cols="50" minlength='30' maxlength="1000" title="Your description of your symptoms is too short." required></textarea></td>
+				</tr>
+			</table>
+			<!-- Checkboxes for selecting diseases -->
+			<p>2. Have you had any of the following before? Check all that apply. <span class='mandatory'>*</span></p>
+			<table>
+				<tbody>
+					<tr>
+						
+						<td>
+							<input type="checkbox" value='chickenpox' name='diseases'>
+						</td>
+						<td>
+							<label>Chicken Pox</label>
+						</td>
+						<td></td>
+						<td>
+							<input type="checkbox" value='measles' name='diseases'>
+						</td>
+						<td>
+							<label>Measles</label>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+							<input type="checkbox" value='smallpox' name='diseases'>
+						</td>
+						<td>
+							<label>Small Pox</label>
+						</td>
+						
+						<td></td>
+						<td>
+							<input type="checkbox" value='tetanus' name='diseases'>
+						</td>
+						<td>
+							<label>Tetanus</label>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+							<input type="checkbox" value='covid19' name='diseases'>
+						</td>
+						<td>
+							<label>Covid-19</label>
+						</td>
+						<td></td>
+						<td>
+							<input type="checkbox" value='other' name='diseases'>
+						</td>
+						
+						<td>
+							<label>Others</label>
+						</td>
+						<td>
+							<input type="text" name="diseases" value='' placeholder="Please Specify">
+						</td>
+					</tr>
+					</tbody>
+			</table><br>
+			<!-- Gender selection using radio buttons -->
+			<p id='gender' style="white-space:nowrap;">3. Which gender do you identify with? <span class='mandatory'>*</span></p>
+			<table>
+				<tr>
+						<td>
+							<label>Male</label>
+						</td>
+						<td>
+							<input type="radio" value='male' name='gender'>
+						</td>
+						<td>
+							<label>Female</label>
+						</td>
+						<td>
+							<input type="radio" value='female' name='gender'>
+						</td>
+						<td>
+							<label>Other</label>
+						</td>
+						<td>
+							<input type="radio" value='other' name='gender'>
+						</td>
+				</tr>
+			</table><br>
+			<!-- Vaccination status using radio buttons -->
+			<p id='vaccination' style="white-space:nowrap;">4. Have you been vaccinated before? <span class='mandatory'>*</span></p>
+			<table>
+				<tr>
+						<td>
+							<label>No</label>
+						</td>
+						<td>
+							<input type="radio" value='0' name='vaccination'>
+						</td>
+						<td>
+							<label>Yes</label>
+						</td>
+						<td>
+							<input type="radio" value='1' name='vaccination'>
+						</td>
+						<td>
+							<input class='others' type="text" name="vaccination" value='' placeholder="If yes, please specify the vaccination names">
+						</td>
+				</tr>
+			</table><br>
+			<!-- Insurance question with radio buttons and input for policy number -->
+			<p id='insurance' style="white-space:nowrap;">5. Do you have insurance? <span class='mandatory'>*</span></p>
+			<table>
+				<tr>
+						<td>
+							<label>No</label>
+						</td>
+						<td>
+							<input type="radio" value='0' name='insurance'>
+						</td>
+						<td>
+							<label>Yes</label>
+						</td>
+						<td>
+							<input type="radio" value='1' name='insurance'>
+						</td>
+						<td>
+							<input class='others' type="text" name="insurance" value='' placeholder="If yes, please specify your policy #">
+						</td>
+				</tr>
+			</table><br>
+			<!-- How are you feeling question with range slider -->
+			<label for='feeling_today'>6. On a scale of 1 to 10, how are you feeling today? (1 = I am not feeling good at all; 10 = I am perfectly fine.)</label><br>
+			<div class="slider-container">
+				<input type="range" id="feeling_today" name="feeling_today" min="1" max="10" step="1">
+				<div class="health-slider">
+			        <span>1</span>
+			        <span>2</span>
+			        <span>3</span>
+			        <span>4</span>
+			        <span>5</span>
+			        <span>6</span>
+			        <span>7</span>
+			        <span>8</span>
+			        <span>9</span>
+			        <span>10</span>
+			    </div>
+			</div>
+
+			<hr>
+			<!-- Input for UserID & password -->
+			<p><i>In order to keep track of all your records, please go ahead and fill the following so that an Adjecta Account is created for you.</i></p>
+			<hr>
+			<table>
+				<!-- Textbox input for UserID -->
+				<tr>
+					<td>
+						<label for='userid'>Username:<span class='mandatory'>*</span></label>
+					</td>
+					<td>
+						<input type="text" id='userid' name="userid" placeholder="" pattern="[a-zA-Z0-9]{6,}+" minlength="6" maxlength="20" required>
+					</td>
+				</tr>
+				<!-- Password type input for password -->
+				<tr>
+					<td>
+						<label for='password'>Password:<span class='mandatory'>*</span></label>
+					</td>
+					<!--Used password regex pattern "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" Source: 
+						https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a -->
+					<td>
+						<input type="password" id='password' name="password" placeholder="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" title='Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' required>
+					</td>
+				</tr>
+				<!-- Password type input for retype password -->
+				<tr>
+					<td>
+						<label for="re_password">Re-type Password:<span class='mandatory'>*</span></label>
+					</td>
+					<td>
+						<input type="password" id='re_password' name="re_password" placeholder="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" required><br>
+					</td>
+			</table><br>
+			
+			<!-- Submit button for the form -->
+			<button class='submit' formaction="thankyou.html">Submit my form</button>
+
+			<!-- Clear all fields button for the form -->
+			<div class='right'>
+				<input type="reset" name="clearall" value="Clear all and Start over" class="reset-btn">
+			</div>
+
+		</form>
+
+		<hr>
+		<!-- Footer information -->
+			<!-- Medical center address, aligned to left -->
+				<div id='left'>Adjecta Medical <br>PO BOX 18881 <br>Sugar Land TX 77496</div>
+			<!-- Contact Us info -->
+				<div id='contact'>Contact Us</div>
+			<!-- Social media links -->
+				<div class='right'><a href='https://facebook.com' target="_blank">Facebook</a> <a href='https://Instagram.com' target="_blank">Instagram</a> <a href='https://x.com' target="_blank">X</a> </div>
+	</div>
+
+	<!-- External script for different javascript -->
+	<script>
+		//Get current date and time using Javascript
+		let today = new Date()
+		datestring = today.toDateString();
+		document.getElementById("date").innerHTML = 'Today is: ' +datestring;
+
+		//Setting max value for date of birth to today. Source: https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1;
+		var yyyy = today.getFullYear();
+		
+		if (dd < 10) {
+			dd = '0' + dd;
+		}
+
+		if (mm < 10) {
+			mm = '0' + mm;
+		} 
+
+		today = yyyy + '-' + mm + '-' + dd;
+		document.getElementById("dob").setAttribute("max", today);
+
+		//SSN input with autoformatting. Checked for blogs, stackexchange for similar implementation. Used similar code structure
+		//https://stackoverflow.com/questions/25367230/masking-a-social-security-number-input
+		const ssnInput = document.getElementById('ssn');
+    	ssnInput.addEventListener('input', function(e) {
+        	let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters. 
+        		if (value.length > 3 && value.length <= 5) {
+            	value = value.replace(/^(\d{3})(\d+)/, '$1-$2');
+        } else if (value.length > 5) {
+            value = value.replace(/^(\d{3})(\d{2})(\d+)/, '$1-$2-$3');
+        }
+        e.target.value = value;
+    });
+
+    	//Zip input with autoformatting. Similar to code for SSN above.
+		const zipInput = document.getElementById('zip');
+    	zipInput.addEventListener('input', function(e) {
+        	let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters. 
+        		if (value.length > 5 && value.length <= 10) {
+            	value = value.replace(/^(\d{5})(\d+)/, '$1-$2');
+        } 
+        e.target.value = value;
+    });
+
+    	//Phone number input with autoformatting. Similar to code for SSN above.
+		const phoneInput = document.getElementById('phone1');
+    	phoneInput.addEventListener('input', function(e) {
+        	let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters. 
+        		if (value.length > 3 && value.length <= 4) {
+            	value = value.replace(/^(\d{3})(\d+)/, '$1-$2');
+        } else if (value.length > 5) {
+            value = value.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
+        } 
+        e.target.value = value;
+    });
+	</script>
+	</body>
+</html>
+

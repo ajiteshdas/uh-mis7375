@@ -1,0 +1,630 @@
+
+<!-- Name: Ajitesh Shankar Das
+Name: Ajitesh Shankar Das
+PSID: 2415523
+Name of file: homework1.html
+Date created: 19th Aug 2024
+Date updated: 20th September 2024
+Description: This is an html file to show a registration form. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Title of the web page -->
+		<title>Adjecta Medical</title>
+
+		<!-- Character encoding set to UTF-8 -->
+		<meta charset="UTF-8">
+
+		<!-- Ensures the web page is responsive on all device sizes -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Link to an external icon for the webpage tab -->
+		<link rel="icon" type="image/x-icon" href="noun-medical-6182322.svg">
+
+		<!-- Link to external CSS file for styling the page -->
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+	<body>
+		<!-- Main container for the webpage content -->
+		<div id='main'>
+
+			<!-- Table to hold the header section with logo, title, and date -->
+			<table id='header'>
+				<tr>
+				<!-- Logo image for Adjecta Medical -->
+				<td width="25%">
+					<img src="Caduceus_large.png" alt="Caduceus_1924" style="white-space: nowrap;">
+				</td>
+				<!-- Title of the medical center -->
+				<td text-align="left">
+					<h1>Adjecta Medical</h1>
+				</td>
+				<!-- Area to display the current date, aligned to the right -->
+				<td align='right' valign="bottom">
+					<p id='date'></p>
+				</td>
+				</tr>
+			</table>
+
+			<!-- Welcome message to the user -->
+			<p><i>Welcome to Adjecta Medical Center. Before we can schedule you with our healthcare professional, kindly fill out the information below.</i></p>
+		<hr>
+
+		<!-- Start of the form for user registration -->
+		<form name='signup' id='signup' action="thankyou.html">
+			<!-- Section for personal information fields -->
+			<table id='section1'>
+				<!-- Message indicating mandatory fields -->
+				<tr><td colspan="50"><span class='mandatory'>*</span>Mandatory fields</td></tr>
+					
+				<!-- First Name, Middle Initial, and Last Name input fields -->
+				<tr>
+					<!-- First Name input with validation for alphabet characters -->
+				<td>
+					<label for='firstname'>First Name:<span class='mandatory'>*</span></label>
+				</td>
+				<td><input type='text' id='firstname' name='firstname' maxlength="30" required pattern="^[A-Za-z'-]*[2-5]?[A-Za-z'-]*" title='Only Alphabets, apostrophes and dashes allowed' placeholder="e.g. John or T'wan">
+					<td id='error-message-fn' class='error-message' style="display: none;">Invalid input. Only letters, apostrophes and dashes allowed.</td>
+					<td id='error-message-fn-reqd' class='error-message' style="display: none;">This is a required field.</td>
+				
+					<!-- how to use "maxlength", https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength-->
+				<!-- Middle Initial input, optional -->
+				<tr>
+				<td>
+					<label for='middleinit'>Middle Initial:</label>
+				</td>
+				<td>
+					<input id='middleinit' type='text' name='middleinit' maxlength="1" size="2">
+					<td id='error-message-mi' class='error-message' style="display: none;">Invalid input. Only 1 letter is allowed.</tr>
+				<!-- Last Name input with validation for alphabet characters -->
+					<td>
+						<label for='lastname'>Last Name:<span class='mandatory'>*</span></label>
+					</td>
+					<td>
+					<input id='lastname' type='text' name='lastname' maxlength="30" required pattern="[a-zA-Z]+" title='Enter only alphabets' placeholder='e.g. Doe'>
+				</td>
+				<td id='error-message-ln' class='error-message' style="display: none;">Invalid input. Only letters, apostrophes, numbers 2-5, and dashes allowed.</td>
+				<td id='error-message-ln-reqd' class='error-message' style="display: none;">This is a required field.</td>
+				</tr>
+			</tr>
+			<!-- Date of Birth field -->
+			<tr>
+				<td>
+					<label for='dob'>Date of Birth:<span class='mandatory'>*</span></label>	
+				</td>
+			
+				<td>
+					<input id='dob' type="date" name="dob" min='1904-01-01' style="width: 70%;" required>
+				</td>
+				<td id='error-message-dob' class='error-message' style="display: none;">Date cannot exceed today's date.</td>
+				<td id='error-message-dob-reqd' class='error-message' style="display: none;">This is a required field.</td>
+			</tr>
+			<!-- Social Security Number (SSN) input with password masking -->
+			<tr>
+				<td>
+				<label for="ssn">Enter your SSN:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input id='ssn' type="password" name="ssn" maxlength="11" placeholder="XXX-XX-XXXX">
+				</td>
+				<td id='error-message-ssn' class='error-message' style="display: none;">SSN is invalid. Please enter correct SSN.</td>
+				<td id='error-message-ssn-reqd' class='error-message' style="display: none;">This is a required field.</td>
+			</tr>
+			<!-- Address fields: Address Line 1 (mandatory) and Address Line 2 (optional) -->
+			<tr>
+				<td>
+					<label for='addr1'>Address Line 1:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input id='addr1' type="text" maxlength="30" name="addr1" placeholder="Street Address, PO Box etc." required>
+				</td>
+				<td id='error-message-addr1' class='error-message' style="display: none;">Invalid input. Only letters, numbers and characters ('#' , '.' , '-' , ',') allowed.</td>
+				<td id='error-message-addr1-reqd' class='error-message' style="display: none;">This is a required field.</td>
+			</tr>
+			<tr>
+				<td>
+					<label for='addr2'>Address Line 2:</label>
+				</td>
+				<td colspan="3">
+					<input id='addr2' type="text" maxlength="30" name="addr2" placeholder="Optional - Apt No., Suite, Unit,">
+				</td>
+			</tr>
+			<!-- City, State, and Zipcode inputs -->
+			<tr>
+				<td>
+					<label for="city">City:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input id='city' type='text' maxlength="30" name='city' required pattern="[a-zA-Z ]+" title='Enter only alphabets' placeholder="e.g. Houston">
+				</td>
+				<td id='error-message-city' class='error-message' style="display: none;">Invalid input. Only letters, numbers and characters ('#' , '.' , '-' , ',') allowed.</td>
+				<td id='error-message-city-reqd' class='error-message' style="display: none;">This is a required field.</td>
+			</tr>
+
+				<td>
+					<label for='state'>State:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+				<!-- Dropdown for selecting a state -->
+				<!--State list from https://www.faa.gov/air_traffic/publications/atpubs/cnt_html/appendix_a.html including overseas territories-->
+				<!--HTML select tag from W3 schools-->
+				<!-- generated the option values list using concantenate in MS Excel-->
+			<select id='state' name='state' required style="width: 73%;">
+				<!-- List of U.S. states -->
+				<option value='' disabled selected>Select State</option> 
+				<option value='AL'>Alabama, AL</option>
+				<option value='AK'>Alaska, AK</option>
+				<option value='AZ'>Arizona, AZ</option>
+				<option value='AR'>Arkansas, AR</option>
+				<option value='CA'>California, CA</option>
+				<option value='CO'>Colorado, CO</option>
+				<option value='CT'>Connecticut, CT</option>
+				<option value='DE'>Delaware, DE</option>
+				<option value='DC'>District of Columbia, DC</option>
+				<option value='FL'>Florida, FL</option>
+				<option value='GA'>Georgia, GA</option>
+				<option value='HI'>Hawaii, HI</option>
+				<option value='ID'>Idaho, ID</option>
+				<option value='IL'>Illinois, IL</option>
+				<option value='IN'>Indiana, IN</option>
+				<option value='IA'>Iowa, IA</option>
+				<option value='KS'>Kansas, KS</option>
+				<option value='KY'>Kentucky, KY</option>
+				<option value='LA'>Louisiana, LA</option>
+				<option value='ME'>Maine, ME</option>
+				<option value='MD'>Maryland, MD</option>
+				<option value='MA'>Massachusetts, MA</option>
+				<option value='MI'>Michigan, MI</option>
+				<option value='MN'>Minnesota, MN</option>
+				<option value='MS'>Mississippi, MS</option>
+				<option value='MO'>Missouri, MO</option>
+				<option value='MT'>Montana, MT</option>
+				<option value='NE'>Nebraska, NE</option>
+				<option value='NV'>Nevada, NV</option>
+				<option value='NH'>New Hampshire, NH</option>
+				<option value='NJ'>New Jersey, NJ</option>
+				<option value='NM'>New Mexico, NM</option>
+				<option value='NY'>New York, NY</option>
+				<option value='NC'>North Carolina, NC</option>
+				<option value='ND'>North Dakota, ND</option>
+				<option value='OH'>Ohio, OH</option>
+				<option value='OK'>Oklahoma, OK</option>
+				<option value='OR'>Oregon, OR</option>
+				<option value='PA'>Pennsylvania, PA</option>
+				<option value='RI'>Rhode Island, RI</option>
+				<option value='SC'>South Carolina, SC</option>
+				<option value='SD'>South Dakota, SD</option>
+				<option value='TN'>Tennessee, TN</option>
+				<option value='TX'>Texas, TX</option>
+				<option value='UT'>Utah, UT</option>
+				<option value='VA'>Virginia, VA</option>
+				<option value='WA'>Washington, WA</option>
+				<option value='WV'>West Virginia, WV</option>
+				<option value='WI'>Wisconsin, WI</option>
+				<option value='WY'>Wyoming, WY</option>
+				<option disabled>----Other U.S. Territories----</option>
+				<option value='AS'>American Samoa, AS</option>
+				<option value='GU'>Guam, GU</option>
+				<option value='MP'>Northern Mariana Islands, MP</option>
+				<option value='PR'>Puerto Rico, PR</option>
+				<option value='TT'>Trust Territories, TT</option>
+				<option value='VI'>Virgin Islands, VI</option>
+			</select>
+			<!-- Zipcode input with formatting -->
+			<td id='error-message-state-reqd' class='error-message' style="display: none;">This is a required field.</td>
+		</tr>
+			<tr>
+				<td>
+					<label for="zip">Zipcode:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input type="text" id="zip" name="zip" maxlength="10" placeholder="XXXXX-XXXX" required>
+					
+				</td>
+				<td id='error-message-zip-reqd' class='error-message' style="display: none;">This is a required field.</td>
+			</tr>
+			<!-- Email and Phone Number inputs -->
+			<tr>
+				<td>
+					<label for='email'>Email:<span class='mandatory'>*</span></label>
+				</td>
+				<td>
+					<input type="Email" id='email' name="email" maxlength="30" placeholder="abc@example.com" required>
+				</td>
+				<td id='error-message-email-reqd' class='error-message' style="display: none;">This is a required field.</td>
+				<td class='error-message' id='error-message-email' style="display: none;">Enter valid email address. E.g. john@example.com.</td>
+				
+			</tr>
+			<tr>
+				<td>
+					<label for='phone1'>Phone Number:</label>
+				</td>
+				<td>
+					<input type="tel" id='phone1' name="phone1" placeholder="XXX-XXX-XXXX" minlength="12" maxlength="12">
+				</td>
+				<td class='error-message' id='error-message-phone1' style="display: none;">Enter valid phone number. E.g. 000-000-0000</td>
+			</tr>
+
+		</table>
+			<hr>
+			<!-- Additional questions related to the user's symptoms, medical history, and insurance -->
+			<p><i>Kindly answer the questions below.</i></p>
+			<hr>
+			<!-- Textarea for describing symptoms -->
+			<p>1. Describe your symptoms.</p>
+			<table>
+				<tr>
+					<td><textarea name='symptoms' placeholder="Please elaborate your symptoms with as much detail as possible." rows="4" cols="50" minlength='30' maxlength="1000" title="Your description of your symptoms is too short."></textarea></td>
+				</tr>
+			</table>
+			<!-- Checkboxes for selecting diseases -->
+			<p id='diseases'  tabindex="0">2. Have you had any of the following before? Check all that apply. <span class='mandatory'>*</span><span id='error-message-diseases-reqd' class='error-message' style="display: none;">This is a required field.</span></p>
+			<table>
+				<tbody>
+					<tr>
+						
+						<td>
+							<input type="checkbox" value='chickenpox' name='diseases'>
+						</td>
+						<td>
+							<label>Chicken Pox</label>
+						</td>
+						<td></td>
+						<td>
+							<input type="checkbox" value='measles' name='diseases'>
+						</td>
+						<td>
+							<label>Measles</label>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+							<input type="checkbox" value='smallpox' name='diseases'>
+						</td>
+						<td>
+							<label>Small Pox</label>
+						</td>
+						
+						<td></td>
+						<td>
+							<input type="checkbox" value='tetanus' name='diseases'>
+						</td>
+						<td>
+							<label>Tetanus</label>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+							<input type="checkbox" value='covid19' name='diseases'>
+						</td>
+						<td>
+							<label>Covid-19</label>
+						</td>
+						<td></td>
+						<td>
+							<input type="checkbox" value='other' name='diseases'>
+						</td>
+						
+						<td>
+							<label>Others</label>
+						</td>
+						<td>
+							<input type="text" name="diseases" value='' placeholder="Please Specify">
+						</td>
+					</tr>
+					</tbody>
+			</table><br>
+			<!-- Gender selection using radio buttons -->
+			<p id='gender' style="white-space:nowrap;" tabindex="0">3. Which gender do you identify with? <span class='mandatory' >*</span><span id='error-message-gender-reqd' class='error-message' style="display: none;">This is a required field.</span></p>
+			<table>
+				<tr>
+						<td>
+							<label>Male</label>
+						</td>
+						<td>
+							<input type="radio" value='male' name='gender'>
+						</td>
+						<td>
+							<label>Female</label>
+						</td>
+						<td>
+							<input type="radio" value='female' name='gender'>
+						</td>
+						<td>
+							<label>Other</label>
+						</td>
+						<td>
+							<input type="radio" value='other' name='gender'>
+						</td>
+				</tr>
+			</table><br>
+			<!-- Vaccination status using radio buttons -->
+			<p id='vaccination' style="white-space:nowrap;" tabindex="0" >4. Have you been vaccinated before? <span class='mandatory'>*</span><span id='error-message-vaccination-reqd' class='error-message' style="display: none;">This is a required field.</span></p>
+			<table>
+				<tr>
+						<td>
+							<label>No</label>
+						</td>
+						<td>
+							<input type="radio" value='0' name='vaccination'>
+						</td>
+						<td>
+							<label>Yes</label>
+						</td>
+						<td>
+							<input type="radio" value='1' name='vaccination'>
+						</td>
+						<td>
+							<input class='others' type="text" name="vaccination" value='' placeholder="If yes, please specify the vaccination names">
+						</td>
+				</tr>
+			</table><br>
+			<!-- Insurance question with radio buttons and input for policy number -->
+			<p id='insurance' style="white-space:nowrap;"  tabindex="0">5. Do you have insurance? <span class='mandatory'>*</span> <span id='error-message-insurance-reqd' class='error-message' style="display: none;">This is a required field.</span></p>
+			<table>
+				<tr>
+						<td>
+							<label>No</label>
+						</td>
+						<td>
+							<input type="radio" value='0' name='insurance'>
+						</td>
+						<td>
+							<label>Yes</label>
+						</td>
+						<td>
+							<input type="radio" value='1' name='insurance'>
+						</td>
+						<td>
+							<input class='others' type="text" name="insurance" value='' placeholder="If yes, please specify your policy #">
+						</td>
+						
+				</tr>
+			</table><br>
+			<!-- How are you feeling question with range slider -->
+			<label for='feeling_today'>6. On a scale of 1 to 10, how are you feeling today? (1 = I am not feeling good at all; 10 = I am perfectly fine.)</label><br>
+			<div class="slider-container">
+			    <div class="health-slider">
+			        <span>1</span>
+			        <span>2</span>
+			        <span>3</span>
+			        <span>4</span>
+			        <span>5</span>
+			        <span>6</span>
+			        <span>7</span>
+			        <span>8</span>
+			        <span>9</span>
+			        <span>10</span>
+			    </div>
+			    <div class="slider-wrapper">
+			        <input type="range" id="feeling_today" name="feeling_today" min="1" max="10" step="1" value="5">
+			    </div>
+			    <div class="slider-value">
+			        I am feeling: <span id="sliderDisplay">5</span>
+			    </div>
+			</div>
+
+			<hr>
+			<!-- Input for UserID & password -->
+			<p><i>In order to keep track of all your records, please go ahead and fill the following so that an Adjecta Account is created for you.</i></p>
+			<hr>
+			<table>
+				<!-- Textbox input for UserID -->
+				<tr>
+					<td>
+						<label for='userid'>Username:<span class='mandatory'>*</span></label>
+					</td>
+					<td>
+						<input type="text" id='userid' name="userid" placeholder="" pattern="[a-zA-Z0-9]+" minlength="6" maxlength="30" required>
+					</td>
+					<td id='error-message-userid-reqd' class='error-message' style="display: none;">This is a required field.</td>
+					<td class='error-message' id='error-message-userid' style="display: none;">5-30 characters, letters, numbers, underscore, or dash; no spaces or special characters; first character must be a letter.</td>
+				</tr>
+				<!-- Password type input for password -->
+				<tr>
+					<td>
+						<label for='password'>Password:<span class='mandatory'>*</span></label>
+					</td>
+					<!--Used password regex pattern "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" Source: 
+						https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a -->
+					<td>
+						<!--validation checks done by javascript only-->
+						<input type="password" id='password' name="password" placeholder="" title='Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' required>
+					</td>
+					<td id='error-message-pwd-reqd' class='error-message' style="display: none;">This is a required field.</td>
+					<td class='error-message' id='error-message-pwd' style="display: none;">Password must be 8-30 characters long, include at least 1 uppercase letter, 1 number, and 1 special character.</td>
+				</tr>
+				<!-- Password type input for retype password -->
+				<tr>
+					<td>
+						<label for="re_password">Re-type Password:<span class='mandatory'>*</span></label>
+					</td>
+					<td>
+						<!--validation checks done by javascript only-->
+						<input type="password" id='re_password' name="re_password" placeholder="" title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" required><br>
+					</td>
+					<td id='error-message-passmatch' class="error-message" style="display: none;">Passwords do not match.</td>
+					<td id='error-message-uidpwd' class="error-message" style="display: none;">Password cannot be the same as or contain your User ID.</td>
+
+			</table>
+			<div id="password-validation">
+				<p>Your password should have the following:</p>
+				    <p id="uppercase" class="invalid">At least one uppercase letter</p>
+				    <p id="number" class="invalid">At least one number</p>
+				    <p id="special-char" class="invalid">At least one special character</p>
+				    <p id="length" class="invalid">8 to 30 characters long</p>
+				</div>
+				<br>
+			
+			<!-- Submit button for the form -->
+			<!--<button class='submit' formaction="thankyou.html">Submit my form</button>-->
+
+			<!-- Clear all fields button for the form -->
+			
+			<div>
+				<input class='right' type="reset" name="clearall" value="Clear all and Start over" class="reset-btn">
+				<input type="button" name="getdata" value="Review" class='review_button' onclick="review()">
+			</div>
+
+		</form>
+		<hr>
+
+		<div id='reviewInfo' style='display: none;'>
+		    <p><i>Please review your information below.</i></p>
+		    <hr>
+		    <p class="review-item">
+		        <strong>First Name:</strong> 
+		        <span id='firstname_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Middle Initial:</strong> 
+		        <span id='middleinit_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Last Name:</strong> 
+		        <span id='lastname_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Date of Birth:</strong> 
+		        <span id='dob_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>SSN:</strong> 
+		        <span id='ssn_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Address Line 1:</strong> 
+		        <span id='addr1_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Address Line 2:</strong> 
+		        <span id='addr2_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>City:</strong> 
+		        <span id='city_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>State:</strong> 
+		        <span id='state_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Zip:</strong> 
+		        <span id='zip_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Email:</strong> 
+		        <span id='email_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Phone:</strong> 
+		        <span id='phone1_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Disease history:</strong> 
+		        <span id='diseases_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Gender:</strong> 
+		        <span id='gender_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Vaccinated?</strong> 
+		        <span id='vaccination_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Insurance?</strong> 
+		        <span id='insurance_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Your wellness level:</strong> 
+		        <span id='feeling_today_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>UserID:</strong> 
+		        <span id='userid_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <p class="review-item">
+		        <strong>Password:</strong> 
+		        <span id='password_'></span>
+		        <span class='edit_button'>
+		        <button onclick="focusEdit()" name='edit' value='Edit'>Edit</button>
+		        </span>
+		    </p>
+		    <input type="submit" name="" form="signup" class='submit' value="Submit">
+		    <hr>
+		</div>
+
+
+		<!-- Footer information -->
+			<!-- Medical center address, aligned to left -->
+				<div id='left'>Adjecta Medical <br>PO BOX 18881 <br>Sugar Land TX 77496</div>
+			<!-- Contact Us info -->
+				<div id='contact'>Contact Us</div>
+			<!-- Social media links -->
+				<div class='right'><a href='https://facebook.com' target="_blank">Facebook</a> <a href='https://Instagram.com' target="_blank">Instagram</a> <a href='https://x.com' target="_blank">X</a> </div>
+	</div>
+
+	<!-- External script for different javascript -->
+	<script src="script.js"></script>
+	</body>
+</html>
+

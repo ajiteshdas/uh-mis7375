@@ -509,5 +509,22 @@ function focusEdit() {
 	document.getElementById(focusID).focus();
 }
 
+
+//Final validation check before submission
+// Get the form element
+const form = document.getElementById('signup');
+
+// Add a submit event listener to perform validation
+form.addEventListener('submit', function(event) {
+    // Run validation
+    const isValid = validation();
+
+    // Prevent form submission if validation fails
+    if (!isValid) {
+        event.preventDefault(); // Stops the form from submitting
+        alert("Please correct the errors before submitting the form."); // Optional alert for the user
+    }
+});
+
     
 

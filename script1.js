@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const fieldConfigs = [
         { id: 'firstname', regex: /^[A-Za-z'-]{1,30}$/, errorMessages: {
                 required: `{field} is required.`,
-                minLength: `{field} must be at least 2 characters long.`,
+                minLength: `{field} must be at least 1 character long.`,
                 maxLength: `{field} cannot exceed 30 characters.`,
                 invalidFormat: `Only letters, apostrophes(\'), and dashes(\-) are allowed in {field}.`
-            }, minLength: 2, maxLength: 30 },
+            }, minLength: 1, maxLength: 30 },
         { id: 'lastname', regex: /^[A-Za-z'-]{1,30}$/, errorMessages: {
                 required: `{field} is required.`,
-                minLength: `{field} must be at least 2 characters long.`,
+                minLength: `{field} must be at least 1 character long.`,
                 maxLength: `{field} cannot exceed 30 characters.`,
                 invalidFormat: `Only letters, apostrophes(\'), and dashes(\-) are allowed in {field}.`
-            }, minLength: 2, maxLength: 30 },
+            }, minLength: 1, maxLength: 30 },
         { id: 'middleinit', regex: /^[A-Za-z]$/, errorMessages: {
                 required: `{field} is required.`,
                 minLength: `{field} can be 1 character.`,

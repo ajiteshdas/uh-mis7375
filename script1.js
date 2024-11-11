@@ -635,4 +635,8 @@ vaccinationRadios.forEach(radio => {
 insuranceRadios.forEach(radio => {
     radio.addEventListener('change', toggleInsuranceText);
 });
+//Setting today's date to the header element    
+let today = new Date()
+		datestring = today.toDateString();
+		document.getElementById("date").innerHTML = 'Today is: ' +datestring;
 });

@@ -694,7 +694,18 @@ function deleteCookie(name) {
 
     const firstNameCookie = getCookie('firstname');
     const welcomeMessage = document.querySelector('#welcome-message p');
+
+//getting the fieldnames from the ids
     const firstNameField = document.getElementById('firstname');
+    const lastNameField = document.getElementById('lastname');
+    const dobField = document.getElementById('dob');
+    const addr1Field = document.getElementById('addr1');
+    const cityField = document.getElementById('city');
+    const stateField = document.getElementById('state');
+    const zipcodeField = document.getElementById('zip');
+    const phoneField = document.getElementById('phone1');
+    const userField = document.getElementById('userid');
+
     const newUserCheckbox = document.getElementById('new-user-checkbox');
 
     if (firstNameCookie) {
@@ -718,8 +729,24 @@ function deleteCookie(name) {
     document.getElementById('signup').addEventListener('submit', function () {
         const rememberMe = document.getElementById('remember-me').checked;
         if (rememberMe) {
-            setCookie('firstname', firstNameField.value, 2); // Expires in 2 days
+            setCookie('firstname', firstNameField.value, 2);
+            setCookie('lastname', lastNameField.value, 2);
+            setCookie('dob', dobField.value, 2);
+            setCookie('addr1', addr1Field.value, 2);
+            setCookie('city', cityField.value, 2);
+            setCookie('state', stateField.value, 2);
+            setCookie('zip', addr1Field.value, 2);
+            setCookie('phone1', zipcodeField.value, 2);
+            setCookie('userid', userField.value, 2); // Expires in 2 days
         } else {
             deleteCookie('firstname');
+            deleteCookie('lastname');
+            deleteCookie('dob');
+            deleteCookie('addr1');
+            deleteCookie('city');
+            deleteCookie('state');
+            deleteCookie('zip');
+            deleteCookie('phone1');
+            deleteCookie('userid');
         }
     });

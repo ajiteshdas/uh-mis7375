@@ -759,8 +759,8 @@ function deleteCookie(name) {
             setCookie('addr1', addr1Field.value, 2);
             setCookie('city', cityField.value, 2);
             setCookie('state', stateField.value, 2);
-            setCookie('zip', addr1Field.value, 2);
-            setCookie('phone1', zipcodeField.value, 2);
+            setCookie('zip', zipcodeField.value, 2);
+            setCookie('phone1', phoneField.value, 2);
             setCookie('email', emailField.value, 2);
             setCookie('userid', userField.value, 2); // Expires in 2 days
         } else {

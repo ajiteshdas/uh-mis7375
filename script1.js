@@ -691,11 +691,22 @@ function deleteCookie(name) {
 }
 
 // Check for existing cookies and display the appropriate message
-
-    const firstNameCookie = getCookie('firstname');
     const welcomeMessage = document.querySelector('#welcome-message p');
 
-//getting the fieldnames from the ids
+//set cookies for fieldnames
+    const firstNameCookie = getCookie('firstname');
+    const lastNameCookie = getCookie('lastname');
+    const dobCookie = getCookie('dob');
+    const addr1Cookie = getCookie('addr1');
+    const cityCookie = getCookie('city');
+    const stateCookie = getCookie('state');
+    const zipcodeCookie = getCookie('zip');
+    const phoneCookie = getCookie('phone1');
+    const emailCookie = getCookie('email');
+    const useridCookie = getCookie('userid');
+    
+    
+    //getting the fieldnames from the ids
     const firstNameField = document.getElementById('firstname');
     const lastNameField = document.getElementById('lastname');
     const dobField = document.getElementById('dob');
@@ -704,13 +715,25 @@ function deleteCookie(name) {
     const stateField = document.getElementById('state');
     const zipcodeField = document.getElementById('zip');
     const phoneField = document.getElementById('phone1');
+    const emailField = document.getElementById('email');
     const userField = document.getElementById('userid');
 
     const newUserCheckbox = document.getElementById('new-user-checkbox');
 
     if (firstNameCookie) {
         welcomeMessage.innerHTML = `Welcome back, ${firstNameCookie}`;
+        
+        //set the value of form field as per saved cookie
         firstNameField.value = firstNameCookie;
+        lastNameField.value = lastNameCookie;
+        dobField.value = dobCookie;
+        addr1Field.value = addr1Cookie;
+        cityField.value = cityCookie;
+        stateField.value = stateCookie;
+        zipcodeField.value = zipcodeCookie;
+        phoneField.value = phoneCookie;
+        emailField.value = emailCookie;
+        userField.value = useridCookie;
 
         // Show "Not me" checkbox
         newUserCheckbox.style.display = 'block';
@@ -725,7 +748,7 @@ function deleteCookie(name) {
         welcomeMessage.innerHTML = 'Welcome New User!';
     }
 
-    // Save first name on form submission if "Remember Me" is checked
+    // Save fields to cookie on form submission if "Remember Me" is checked
     document.getElementById('signup').addEventListener('submit', function () {
         const rememberMe = document.getElementById('remember-me').checked;
         if (rememberMe) {
@@ -737,6 +760,7 @@ function deleteCookie(name) {
             setCookie('state', stateField.value, 2);
             setCookie('zip', addr1Field.value, 2);
             setCookie('phone1', zipcodeField.value, 2);
+            setCookie('email', emailField.value, 2);
             setCookie('userid', userField.value, 2); // Expires in 2 days
         } else {
             deleteCookie('firstname');
@@ -747,6 +771,7 @@ function deleteCookie(name) {
             deleteCookie('state');
             deleteCookie('zip');
             deleteCookie('phone1');
+            deleteCookie('email');
             deleteCookie('userid');
         }
     });

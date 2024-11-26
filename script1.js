@@ -725,15 +725,16 @@ function deleteCookie(name) {
         
         //set the value of form field as per saved cookie
         firstNameField.value = firstNameCookie;
-        lastNameField.value = lastNameCookie;
-        dobField.value = dobCookie;
-        addr1Field.value = addr1Cookie;
-        cityField.value = cityCookie;
-        stateField.value = stateCookie;
-        zipcodeField.value = zipcodeCookie;
-        phoneField.value = phoneCookie;
-        emailField.value = emailCookie;
-        userField.value = useridCookie;
+        lastNameField.value = getCookie('lastname');
+        dobField.value = getCookie('dob');
+        addr1Field.value = getCookie('addr1');
+        cityField.value = getCookie('city');
+        stateField.value = getCookie('state');
+        zipcodeField.value = getCookie('zip');
+        phoneField.value = getCookie('phone1');
+        emailField.value = getCookie('email');
+        userField.value = getCookie('userid');
+
 
         // Show "Not me" checkbox
         newUserCheckbox.style.display = 'block';

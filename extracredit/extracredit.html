@@ -19,15 +19,20 @@
     </div>
 </header>
     <main>
-        <div id="welcome-modal" class="modal">
-            <div class="modal-content">
-                <h2>Welcome!</h2>
-                <p id="welcome-message"></p>
-                 <div class="g-recaptcha" data-sitekey="6Le3_ZEqAAAAAFYLfoqwHMTAPk_gCjNbqKzV6VZP"></div>
-                <button id="continue-btn">Continue</button>
-                <button id="not-you-btn">Not You?</button>
-            </div>
-        </div>
+     <div id="welcome-modal" class="modal">
+		    <div class="modal-content">
+		        <h2>Welcome!</h2>
+		        <p id="welcome-message"></p>
+		        <div id="user-options" class="hidden">
+		            <p>Would you like to continue where you left off or start fresh?</p>
+		            <button id="continue-btn">Yes, continue</button>
+		            <button id="start-fresh-btn">No, start over</button>
+		        </div>
+		        <button id="not-you-btn" class="hidden">Not You?</button>
+		    </div>
+		</div>
+</div>
+
         <form id="registration-form" class="hidden">
             <!-- Basic Information -->
             <div class="form-group">

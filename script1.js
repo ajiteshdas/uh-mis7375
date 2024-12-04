@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fieldConfigs.forEach((config) => {
             const field = document.getElementById(config.id);
             const fieldIDdisplay = field.id;
-            console.log(field.id);
+            //console.log(field.id);
             const reviewField = document.getElementById(`${config.id}_`);
             if((field && reviewField) && (field.id == 'password' || field.id == 'ssn')){
                 reviewField.textContent = '' || `To ensure privacy, ${fieldIDdisplay} is not displayed.`;

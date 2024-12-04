@@ -772,5 +772,56 @@ toggleSSNVisibility.addEventListener("click", () => {
             }
         }
         return null;
-    }    
+    }
+
+    //Captcha
+
+    // Common function to validate reCAPTCHA
+function validateRecaptchaAndProceed(buttonType) {
+    const recaptchaResponse = grecaptcha.getResponse();
+
+    if (!recaptchaResponse) {
+        alert("Please verify that you are not a robot.");
+        return;
+    }
+
+    alert("reCAPTCHA verified. Welcome!");
+
+    if (buttonType === "continue") {
+        // Handle "Continue" button logic
+        if (storedData) {
+            // Prefill form with data from localStorage
+            const formData = JSON.parse(storedData);
+            Object.entries(formData).forEach(([key, value]) => {
+                const input = document.getElementById(key);
+                if (input) {
+                    if (input.type === "checkbox" || input.type === "radio") {
+                        input.checked = value;
+                    } else {
+                        input.value = value;
+                    }
+                }
+            });
+        }
+    } else if (buttonType === "proceed") {
+        // Handle "Proceed" button logic for new users
+        localStorage.clear(); // Clear any existing data
+        form.reset(); // Reset the form for a new user
+    }
+
+    // Hide modal and show the form
+    welcomeModal.classList.add("hidden");
+    form.classList.remove("hidden");
+}
+
+// Event listener for the "Continue" button
+document.getElementById("continue-btn").addEventListener("click", () => {
+    validateRecaptchaAndProceed("continue");
+});
+
+// Event listener for the "Proceed" button (new user)
+document.getElementById("proceed-new-btn").addEventListener("click", () => {
+    validateRecaptchaAndProceed("proceed");
+});
+
 });

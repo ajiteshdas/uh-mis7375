@@ -52,19 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validate the date on input
 dobInput.addEventListener("input", () => {
-    const value = dobInput.value;
-    const { isValid, message } = isValidDOB(value);
+    const dobResult = isValidDOB(dobInput.value);
 
-    if (!value.trim()) {
-        // Handle empty field
-        showError(dobInput, "This field is required.");
-        markFieldInvalid(dobInput);
-    } else if (!isValid) {
-        // Show specific error based on validation logic
-        showError(dobInput, message);
+    if (!dobResult.valid) {
+        showError(dobInput, dobResult.message);
         markFieldInvalid(dobInput);
     } else {
-        // Clear error and mark field as valid if all checks pass
         clearError(dobInput);
         markFieldValid(dobInput);
     }
@@ -121,33 +114,28 @@ function clearError(input) {
 
     //date validation
 function isValidDOB(value) {
-
-    const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/; // YYYY-MM-DD format
-    if (!dateRegex.test(value)) {
-        return { isValid: false, message: "Invalid format. Please use YYYY-MM-DD." };
+    if (!value) {
+        return { valid: false, message: "This field is required." };
     }
 
-    const [year, month, day] = value.split("-").map(Number);
-    const date = new Date(year, month - 1, day); // JavaScript months are 0-indexed
-
-    // Check if the constructed date matches the input
-    if (
-        date.getFullYear() !== year ||
-        date.getMonth() !== month - 1 ||
-        date.getDate() !== day
-    ) {
-        return { isValid: false, message: "Invalid date entered." };
-    }
-
-    // Check if the date is within range
     const minDate = new Date("1920-01-01");
-    const maxDate = new Date();
-    if (date < minDate || date > maxDate) {
-        return { isValid: false, message: "Date must be between 1920-01-01 and today." };
+    const today = new Date();
+    const inputDate = new Date(value);
+
+    // Check if the date is invalid
+    if (isNaN(inputDate.getTime())) {
+        return { valid: false, message: "Invalid date format. Use YYYY-MM-DD." };
     }
 
-    return { isValid: true, message: "" }; // All checks passed
+    // Check if the date is out of range
+    if (inputDate < minDate || inputDate > today) {
+        return { valid: false, message: "Date must be between 1920-01-01 and today." };
+    }
+
+    return { valid: true, message: "" }; // Date is valid
 }
+
+
 
 
 
@@ -178,7 +166,13 @@ function isValidDOB(value) {
          markFieldInvalid(input);
         return false;
     } else if (input.type === "date") {
-        isValidDOB(input.value);
+        // For date validation, use isValidDOB and process its return value
+        const dobValidation = isValidDOB(input.value);
+        if (!dobValidation.valid) {
+            showError(input, dobValidation.message);
+            markFieldInvalid(input);
+            return false;
+        }
     }else if (!validator(input.value.trim())) {
         console.log(`Input "${input.id}" failed validation.`);
         showError(input, errorMessage);
@@ -489,6 +483,7 @@ submitBtn.addEventListener("click", (e) => {
             if (
                 input.id === "middle-initial" ||
                 input.id === "address2" ||
+                input.id === "dob" ||
                 (input.id === "vaccination-details" && !document.querySelector("input[name='vaccination'][value='Yes']").checked) ||
                 (input.id === "insurance-details" && !document.querySelector("input[name='insurance'][value='Yes']").checked)
             ) {
@@ -521,6 +516,8 @@ submitBtn.addEventListener("click", (e) => {
         return;
     }
 
+    saveDataToLocalStorage();
+
     // If all fields are valid, redirect to the thank you page
     window.location.href = "thankyou_ec.html";
 });
@@ -540,9 +537,12 @@ submitBtn.addEventListener("click", (e) => {
 
         if (valid) {
             alert("Form submitted successfully!");
+            localStorage.clear(); // Clear localStorage after submission
+        form.reset(); // Clear the form
         } else {
             alert("Please correct the errors before submitting.");
         }
+        
     });
 
     //Toggle iframe
@@ -566,25 +566,20 @@ submitBtn.addEventListener("click", (e) => {
     const continueBtn = document.getElementById("continue-btn");
     const notYouBtn = document.getElementById("not-you-btn");
 
-        // Show the welcome modal on page load
-        document.addEventListener("DOMContentLoaded", () => {
-            welcomeModal.classList.remove("hidden");
-        });
-
         // Hide welcome modal and show form on "Continue"
         continueBtn.addEventListener("click", () => {
-        const recaptchaResponse = grecaptcha.getResponse();
+        //const recaptchaResponse = grecaptcha.getResponse();
 
-        if (!recaptchaResponse) {
-            alert("Please verify that you are not a robot.");
-            return;
-        }
+        //if (!recaptchaResponse) {
+        //    alert("Please verify that you are not a robot.");
+        //    return;
+        //}
 
         // Proceed if reCAPTCHA is verified
-        alert("reCAPTCHA verified. Welcome!");
+        //alert("reCAPTCHA verified. Welcome!");
         firstNameInput.value = 'John';
         welcomeModal.classList.add("hidden");
-        registrationForm.classList.remove("hidden");
+        form.classList.remove("hidden");
     });
 
 
@@ -666,4 +661,108 @@ toggleSSNVisibility.addEventListener("click", () => {
 });
 
 
+    //Cookie integration
+
+    const userOptions = document.getElementById("user-options");
+    const startFreshBtn = document.getElementById("start-fresh-btn");
+    const welcomeMessage = document.getElementById("welcome-message");
+
+    // Utility Functions
+    function setCookie(name, value, days) {
+        const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    }
+
+    function getCookie(name) {
+        const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+            const [key, value] = cookie.split("=");
+            acc[key] = value;
+            return acc;
+        }, {});
+        return cookies[name];
+    }
+
+    function clearLocalStorage() {
+        localStorage.removeItem("formData");
+    }
+
+    // Check for Existing User
+    const username = getCookie("username");
+    const savedData = localStorage.getItem("formData");
+
+    if (username && savedData) {
+        // Returning user
+        welcomeMessage.textContent = `Welcome back, ${username}!`;
+        userOptions.classList.remove("hidden"); // Show continue/start over options
+        notYouBtn.classList.remove("hidden");
+    } else {
+        // New user
+        document.querySelector("#welcome-modal .modal-content").innerHTML += "Welcome to our registration portal! Please take a moment to fill out the form.\
+         If you need to step away, don't worry — we'll save your progress so you can pick up right where you left off." + 
+            `<button id="proceed-new-btn" class="new-user-btn"> Let's get started!</button>
+        `;
+        document
+            .getElementById("proceed-new-btn")
+            .addEventListener("click", () => {
+                welcomeModal.classList.add("hidden");
+                form.classList.remove("hidden");
+            });
+        userOptions.classList.add("hidden"); // Hide options for new users
+        notYouBtn.classList.add("hidden"); // No "Not You?" option for new users
+    }
+
+    // Handle Continue for Returning User
+    continueBtn.addEventListener("click", () => {
+        const savedFormData = JSON.parse(localStorage.getItem("formData"));
+        if (savedFormData) {
+            // Prefill form with saved data
+            Object.entries(savedFormData).forEach(([key, value]) => {
+                const field = form.elements[key];
+                if (field) {
+                    field.value = value;
+                }
+            });
+        }
+        welcomeModal.classList.add("hidden"); // Hide modal
+        form.classList.remove("hidden"); // Show form
+    });
+
+    // Handle Start Over
+    startFreshBtn.addEventListener("click", () => {
+        clearLocalStorage(); // Clear saved data
+        form.reset(); // Reset form fields
+        welcomeModal.classList.add("hidden"); // Hide modal
+        form.classList.remove("hidden"); // Show form
+    });
+
+    // Handle New User Proceeding
+    notYouBtn.addEventListener("click", () => {
+        clearLocalStorage();
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        welcomeModal.classList.add("hidden");
+        form.classList.remove("hidden");
+    });
+
+    function saveDataToLocalStorage(data) {
+        localStorage.setItem("formData", JSON.stringify(data));
+    }
+
+    function getDataFromLocalStorage() {
+        return JSON.parse(localStorage.getItem("formData")) || null;
+    }
+
+    function saveNameToCookie(name) {
+        document.cookie = `userName=${encodeURIComponent(name)}; path=/; max-age=31536000`; // 1 year expiration
+    }
+
+    function getNameFromCookie() {
+        const cookies = document.cookie.split("; ");
+        for (const cookie of cookies) {
+            const [key, value] = cookie.split("=");
+            if (key === "userName") {
+                return decodeURIComponent(value);
+            }
+        }
+        return null;
+    }    
 });

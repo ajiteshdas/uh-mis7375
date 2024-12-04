@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="extracredit.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="sticky-header">
+    <img src="Caduceus_large.png" alt="Adjecta Medical Logo" class="header-logo">
+    <div class="header-content">
+        <h1>Adjecta Medical</h1>
+        <h3>Patient Registration Form</h3>
+        <div class="progress-bar" id="progress-bar"></div>
+        <span id='today_date'>Today is: </span>
+    </div>
+</header>
+    <main>
+        <div id="welcome-modal" class="modal">
+            <div class="modal-content">
+                <h2>Welcome!</h2>
+                <p id="welcome-message"></p>
+                 <div class="g-recaptcha" data-sitekey="6Le3_ZEqAAAAAFYLfoqwHMTAPk_gCjNbqKzV6VZP"></div>
+                <button id="continue-btn">Continue</button>
+                <button id="not-you-btn">Not You?</button>
+            </div>
+        </div>
+        <form id="registration-form" class="hidden">
+            <!-- Basic Information -->
+            <div class="form-group">
+                <label for="first-name">First Name <i class="fas fa-user"></i></label>
+                <input type="text" id="first-name" maxlength="30" placeholder="Enter your first name" required>
+                <div class="validation-feedback">
+			        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+			    </div>
+            </div>
+            <div class="form-group">
+                <label for="middle-initial">Middle Initial <i class="fas fa-user"></i></label>
+                <input type="text" id="middle-initial" maxlength="1" placeholder="M">
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name <i class="fas fa-user"></i></label>
+                <input type="text" id="last-name" maxlength="30" placeholder="Enter your last name" required>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth <i class="fas fa-calendar"></i></label>
+                <input type="date" id="dob" max="">
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+			    <label for="ssn">Social Security Number <i class="fas fa-lock"></i></label>
+			    <div class="input-container">
+			        <input type="password" id="ssn" placeholder="XXX-XX-XXXX" maxlength="11" required>
+			        <i class="fas fa-eye toggle-visibility"></i> <!-- Toggle icon -->
+			    </div>
+			    <div class="validation-feedback">
+			        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+			    </div>
+			</div>
+            <div class="form-group">
+                <label for="email">Email <i class="fas fa-envelope"></i></label>
+                <input type="email" id="email" placeholder="example@example.com" required>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number <i class="fas fa-phone"></i></label>
+                <input type="text" id="phone" maxlength="12" placeholder="XXX-XXX-XXXX" required>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address1">Address Line 1 <i class="fas fa-home"></i></label>
+                <input type="text" id="address1" maxlength="30" required>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="address2">Address Line 2 <i class="fas fa-home"></i></label>
+                <input type="text" id="address2" maxlength="30">
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="state">State <i class="fas fa-map-marker-alt"></i></label>
+                <select id="state">
+                    <option value="">Select State</option>
+                    <!-- Add states -->
+                    <option value="TX">Texas</option>
+                </select>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Zip Code <i class="fas fa-map-marker"></i></label>
+                <input type="text" id="zipcode" maxlength="10" required>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+
+            <!-- Symptoms -->
+            <div class="form-group">
+                <label for="symptoms">Describe Your Symptoms <i class="fas fa-notes-medical"></i></label>
+                <textarea id="symptoms" rows="4" placeholder="Describe your symptoms..."></textarea>
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+
+            <!-- Disease History -->
+            <div class="form-group">
+                <label>Disease History <i class="fas fa-clipboard-list"></i></label>
+                <div>
+                    <label><input type="checkbox" value="Chickenpox"> Chickenpox</label>
+                    <label><input type="checkbox" value="Measles"> Measles</label>
+                    <label><input type="checkbox" value="Tetanus"> Tetanus</label>
+                    <label><input type="checkbox" value="Smallpox"> Smallpox</label>
+                    <label><input type="checkbox" value="Covid-19"> Covid-19</label>
+                    <label>
+                        <input type="checkbox" value="Others" id="other-disease-checkbox"> Others
+                        <input type="text" id="other-disease" class="hidden" placeholder="Specify">
+                        <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+                    </label>
+                    <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+                </div>
+            </div>
+
+            <!-- Vaccination -->
+            <div class="form-group">
+                <label>Have You Had Vaccinations Before? <i class="fas fa-syringe"></i></label>
+                <div>
+                    <label><input type="radio" name="vaccination" value="Yes"> Yes</label>
+                    <label><input type="radio" name="vaccination" value="No"> No</label>
+                    <input type="text" id="vaccination-details" class="hidden" placeholder="Provide details">
+                    <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+                </div>
+            </div>
+
+            <!-- Insurance -->
+            <div class="form-group">
+                <label>Do You Have Insurance? <i class="fas fa-briefcase-medical"></i></label>
+                <div>
+                    <label><input type="radio" name="insurance" value="Yes"> Yes</label>
+                    <label><input type="radio" name="insurance" value="No"> No</label>
+                    <input type="text" id="insurance-details" class="hidden" placeholder="Provide insurance details">
+                    <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label>What Is Your Gender? <i class="fas fa-venus-mars"></i></label>
+                <div>
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                    <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+                </div>
+            </div>
+
+            <!-- Account Details -->
+            <div class="form-group">
+                <label for="username">Username <i class="fas fa-user-circle"></i></label>
+                <input type="text" id="username" maxlength="30" placeholder="Choose a username">
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password <i class="fas fa-key"></i></label>
+                <input type="password" id="password" placeholder="Create a password">
+                <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+                <ul id="password-criteria">
+                    <li id="min-length">At least 8 characters</li>
+                    <li id="uppercase">At least one uppercase letter</li>
+                    <li id="lowercase">At least one lowercase letter</li>
+                    <li id="number">At least one number</li>
+                    <li id="special-char">At least one special character</li>
+                    <li id="no-username">Does not contain your username</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password <i class="fas fa-key"></i></label>
+                <input type="password" id="confirm-password" placeholder="Re-type your password">
+               <div class="validation-feedback">
+        <span class="error-message"></span>
+			        <span class="valid-icon"><i class="fas fa-check-circle valid-icon"></i></span>
+    </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="form-group">
+                <button type="button" id="review-btn">Review</button>
+                <button type="reset" id="clear-btn">Clear All</button>
+            </div>
+        </form>
+
+        <!-- Modal for Review -->
+        <div id="review-modal" class="modal hidden">
+		    <div class="modal-content">
+		        <h2>Review Your Details</h2>
+		        <div id="review-content">
+		            <!-- Dynamically populated content -->
+		        </div>
+		        <div class="buttons-container">
+		            <button id="edit-btn" class="edit-button">Edit</button>
+		            <button id="submit-btn">Submit</button>
+		        </div>
+		    </div>
+		</div>
+
+        <!-- Toggleable Iframe -->
+        <iframe id="cdc-iframe" src="https://www.cdc.gov" hidden></iframe>
+        <button id="toggle-iframe-btn">Toggle CDC Info</button>
+    </main>
+    <footer class="sticky-footer">
+    	 Adjecta Medical | PO BOX 18881 | Sugar Land, TX 77496
+		    <br> <a href="mailto:info@adjectamedical.com">Contact Us</a>
+		     | <a href="x.com">Facebook</a> | <a href="x.com">Instagram</a> |  <a href="x.com">X</a>
+        <p>&copy; 2024 Patient Registration System</p>
+    </footer>
+    <script src="extracredit.js"></script>
+</body>
+</html>

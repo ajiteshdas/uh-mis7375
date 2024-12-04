@@ -1,0 +1,303 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.header-logo {
+    height: 60px; /* Adjust the size of the image */
+    margin-right: 15px;
+}
+
+.header-content {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.header-content h1,
+.header-content h3,
+.header-content span {
+    margin: 0;
+}
+
+.sticky-header, .sticky-footer {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-footer {
+    top: auto;
+    bottom: 0;
+}
+
+/* Form Styles */
+form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px; /* Space between fields */
+}
+
+
+/* Validation Feedback Container */
+.validation-feedback {
+    margin-top: 5px; /* Space between input and feedback */
+    display: flex;
+    flex-direction: column; /* Stack error and valid icon vertically */
+    align-items: flex-start; /* Align feedback text/icons to the left */
+}
+
+/* Valid Icon Styling */
+.valid-icon {
+    color: green;
+    font-size: 1em;
+    display: none; /* Hidden by default */
+    margin-top: 5px; /* Space above the icon */
+}
+
+/* Show valid icon when field is valid */
+.form-group.valid .valid-icon {
+    display: block;
+}
+
+/* Show error message when invalid */
+.form-group.invalid .error-message {
+    display: block;
+}
+
+
+/* Ensure only one is visible at a time */
+.form-group.valid .error-message,
+.form-group.invalid .valid-icon {
+    display: none;
+}
+
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none; /* Hidden by default */
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+/* Input Field Styling */
+input, select, textarea {
+    height: 40px; /* Set a consistent height */
+    padding: 10px; /* Adjust padding for better appearance */
+    font-size: 16px; /* Adjust font size for readability */
+    border: 1px solid #ccc; /* Default border style */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in height */
+    width: 100%; /* Make inputs span the width of the container */
+}
+
+/* Textarea Specific Styling */
+textarea {
+    height: auto; /* Allow for dynamic height */
+    min-height: 80px; /* Set a minimum height */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Input Field Focus */
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff; /* Highlighted border color */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus glow */
+}
+
+
+/* Container for the input and toggle */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Toggle Visibility Icon */
+.input-container .toggle-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #555;
+}
+
+#password-criteria li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    color: #555; /* Default color */
+}
+
+#password-criteria li.valid {
+    color: green; /* Turn green when valid */
+    font-weight: bold; /* Optional: make it bold */
+}
+
+#password-criteria li.invalid {
+    color: red; /* Optional: turn red if invalid */
+}
+/* Modal Overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adds an overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px; /* Adds spacing around the modal */
+    box-sizing: border-box;
+    overflow: auto; /* Ensures the modal is scrollable */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px; /* Adds consistent padding inside the modal */
+    width: 100%;
+    max-width: 600px;
+    max-height: 90%; /* Keeps modal height within the viewport */
+    overflow-y: auto; /* Allows vertical scrolling within the modal */
+    display: flex;
+    flex-direction: column; /* Stacks content vertically */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adds a soft shadow for depth */
+}
+
+/* Modal Header */
+.modal-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the header */
+    text-align: center; /* Center the header text */
+}
+
+/* Review Item */
+.review-item {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for long text */
+    justify-content: space-between; /* Space between label and value */
+    align-items: center; /* Vertically align items */
+    margin-bottom: 15px; /* Space between review items */
+    padding: 10px 0; /* Padding within each item */
+    border-bottom: 1px solid #ddd; /* Optional separator */
+}
+
+.review-item strong {
+    width: 40%; /* Allocate space for the label */
+    font-weight: bold;
+    text-align: left;
+}
+
+.review-item span {
+    width: 50%; /* Allocate space for the value */
+    text-align: right;
+}
+
+/* Buttons in Modal */
+.modal-content .buttons-container {
+    display: flex;
+    justify-content: space-between; /* Align buttons to opposite ends */
+    margin-top: 20px; /* Space above the buttons */
+}
+
+.modal-content button {
+    padding: 10px 20px; /* Consistent padding for buttons */
+    font-size: 16px; /* Larger font for better readability */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Style for the Edit Button */
+.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for Submit Button */
+#submit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+#submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Scrollbar Style (Optional) */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: #999999;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Iframe Styles */
+iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    display: none;
+}
+
+iframe.visible {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    display: block;
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 5px;
+    background-color: #4caf50;
+    width: 0;
+    transition: width 0.2s ease-in-out;
+}

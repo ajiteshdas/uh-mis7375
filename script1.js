@@ -86,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validation functions and event listeners
     fieldConfigs.forEach(config => {
         const fieldElement = document.getElementById(config.id);
-        console.log(fieldElement);
+        //console.log(fieldElement);
         if (fieldElement) {
-            console.log(fieldElement);
+            //console.log(fieldElement);
             const errorTd = fieldElement.closest('td').nextElementSibling;
             if (errorTd && errorTd.classList.contains('error-message')) {
                 errorTd.id = `error-message-${config.id}`;
@@ -568,9 +568,9 @@ function validateVaccination() {
     const vaccinationInput = document.querySelector('input[name="vaccination_text"]');
     const isChecked = Array.from(vaccinationRadios).some(rb => rb.checked);
 
-    console.log("validateVaccination - vaccinationRadios:", vaccinationRadios);
-    console.log("validateVaccination - specifyVaccinationRadio:", specifyVaccinationRadio);
-    console.log("validateVaccination - vaccinationInput:", vaccinationInput);
+    //console.log("validateVaccination - vaccinationRadios:", vaccinationRadios);
+    //console.log("validateVaccination - specifyVaccinationRadio:", specifyVaccinationRadio);
+    //console.log("validateVaccination - vaccinationInput:", vaccinationInput);
 
     // Ensure all required elements are present
     if (!isChecked) {
@@ -588,9 +588,9 @@ function validateInsurance() {
     const insuranceInput = document.querySelector('input[name="insurance_text"]');
     const isChecked = Array.from(insuranceRadios).some(rb => rb.checked);
 
-    console.log("validateInsurance - insuranceRadios:", insuranceRadios);
-    console.log("validateInsurance - specifyInsuranceRadio:", specifyInsuranceRadio);
-    console.log("validateInsurance - insuranceInput:", insuranceInput);
+    //console.log("validateInsurance - insuranceRadios:", insuranceRadios);
+    //console.log("validateInsurance - specifyInsuranceRadio:", specifyInsuranceRadio);
+    //console.log("validateInsurance - insuranceInput:", insuranceInput);
 
     // Ensure all required elements are present
     if (!isChecked) {

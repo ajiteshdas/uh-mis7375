@@ -122,17 +122,18 @@ function isValidDOB(value) {
     const today = new Date();
     const inputDate = new Date(value);
 
-    // Check if the date is invalid
     if (isNaN(inputDate.getTime())) {
-        return { valid: false, message: "Invalid date format. Use YYYY-MM-DD." };
+        // When the date is invalid or malformed
+        return { valid: false, message: "Invalid date entered. Please use the correct date format." };
     }
 
-    // Check if the date is out of range
     if (inputDate < minDate || inputDate > today) {
+        // When the date is out of range
         return { valid: false, message: "Date must be between 1920-01-01 and today." };
     }
 
-    return { valid: true, message: "" }; // Date is valid
+    // When the date is valid
+    return { valid: true, message: "" };
 }
 
 
@@ -215,12 +216,19 @@ function isValidDOB(value) {
         validateField(zipcodeInput, isValidZip, validationMessages.invalidZip)
     );
 
-    address1Input.addEventListener("input", () =>
-        validateField(address1Input, (value) => /^[a-zA-Z0-9\-\\/]{2,30}$/.test(value), validationMessages.required)
+    address1Input.addEventListener("input", () => {
+    const trimmedValue = address1Input.value.trim();
+    console.log("Trimmed Value:", trimmedValue);
+    validateField(
+        address1Input,
+        (value) => /^[a-zA-Z0-9\s,.-]{2,30}$/.test(trimmedValue),
+        "Address Line 1 must be 2-30 characters and can include letters, numbers, spaces, commas, periods, and hyphens."
     );
+});
+
 
     address2Input.addEventListener("input", () =>
-        validateField(address2Input, (value) => /^[a-zA-Z0-9\-\\/]{0,30}$/.test(value), validationMessages.required)
+        validateField(address2Input, (value) => /^[a-zA-Z0-9\s,.-]{2,30}$/.test(value), validationMessages.required)
     );
 
     symptomsInput.addEventListener("input", () =>

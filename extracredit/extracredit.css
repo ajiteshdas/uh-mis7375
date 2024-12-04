@@ -301,3 +301,11 @@ iframe.visible {
     width: 0;
     transition: width 0.2s ease-in-out;
 }
+
+#recaptcha-container {
+    margin: 20px 0;
+    text-align: center;
+}
+.g-recaptcha {
+    display: inline-block;
+}

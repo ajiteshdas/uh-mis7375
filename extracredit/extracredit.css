@@ -22,7 +22,7 @@ body {
     margin: 0;
 }
 
-.sticky-header, .sticky-footer {
+.sticky-footer {
     position: sticky;
     top: 0;
     z-index: 999;
@@ -294,18 +294,40 @@ iframe.visible {
     display: block;
 }
 
-/* Progress Bar */
-.progress-bar {
-    height: 5px;
-    background-color: #4caf50;
-    width: 0;
-    transition: width 0.2s ease-in-out;
-}
-
 #recaptcha-container {
     margin: 20px 0;
     text-align: center;
 }
 .g-recaptcha {
     display: inline-block;
+}
+
+.progress-bar-container {
+    width: 100%; /* Make it span the full width */
+    background-color: #f3f3f3;
+    height: 10px;
+    overflow: hidden;
+    position: absolute; /* Position it relative to the header */
+    bottom: 0; /* Stick it to the bottom */
+}
+
+.progress-bar {
+    width: 0%; /* Start at 0% */
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease-in-out;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center align the content */
 }

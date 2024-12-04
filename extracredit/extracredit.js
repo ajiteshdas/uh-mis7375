@@ -83,7 +83,7 @@ function showError(input, message) {
         errorSpan.style.display = "block"; // Make the error message visible
         input.setAttribute("aria-invalid", "true"); // Mark the input as invalid for accessibility
     } else {
-        console.error("Error message span not found for:", input);
+        //console.error("Error message span not found for:", input);
     }
 }
 
@@ -159,10 +159,10 @@ function isValidDOB(value) {
     function validateField(input, validator, errorMessage) {
     if (!input) return false;
 
-    console.log(`Validating input: ${input.id}, value: "${input.value}"`);
+    //console.log(`Validating input: ${input.id}, value: "${input.value}"`);
 
     if (!input.value.trim()) {
-        console.log(`Input "${input.id}" is empty.`);
+        //console.log(`Input "${input.id}" is empty.`);
         showError(input, validationMessages.required);
          markFieldInvalid(input);
         return false;
@@ -175,12 +175,12 @@ function isValidDOB(value) {
             return false;
         }
     }else if (!validator(input.value.trim())) {
-        console.log(`Input "${input.id}" failed validation.`);
+        //console.log(`Input "${input.id}" failed validation.`);
         showError(input, errorMessage);
          markFieldInvalid(input);
         return false;
     } else {
-        console.log(`Input "${input.id}" passed validation.`);
+        //console.log(`Input "${input.id}" passed validation.`);
         clearError(input);
         markFieldValid(input);
         return true;
@@ -218,7 +218,7 @@ function isValidDOB(value) {
 
     address1Input.addEventListener("input", () => {
     const trimmedValue = address1Input.value.trim();
-    console.log("Trimmed Value:", trimmedValue);
+    //console.log("Trimmed Value:", trimmedValue);
     validateField(
         address1Input,
         (value) => /^[a-zA-Z0-9\s,.-]{2,30}$/.test(trimmedValue),
@@ -823,5 +823,46 @@ document.getElementById("continue-btn").addEventListener("click", () => {
 document.getElementById("proceed-new-btn").addEventListener("click", () => {
     validateRecaptchaAndProceed("proceed");
 });
+
+    //progress bar
+    // Collect all required fields
+    const requiredFields = Array.from(
+        form.querySelectorAll("input[required], select[required], textarea[required]")
+    );
+
+    // Function to update progress
+    function updateProgressBar() {
+        let completedFields = 0;
+
+        requiredFields.forEach((field) => {
+            if (field.type === "checkbox" || field.type === "radio") {
+                const group = form.querySelectorAll(`input[name="${field.name}"]:checked`);
+                if (group.length > 0) {
+                    completedFields++;
+                }
+            } else if (field.value.trim() !== "") {
+                completedFields++;
+            }
+        });
+
+        const progress = (completedFields / requiredFields.length) * 100;
+        progressBar.style.width = `${progress}%`;
+
+        // Optionally adjust color for full completion
+        if (progress === 100) {
+            progressBar.style.backgroundColor = "#00c853";
+        } else {
+            progressBar.style.backgroundColor = "#4caf50";
+        }
+    }
+
+    // Attach event listeners to all fields
+    requiredFields.forEach((field) => {
+        field.addEventListener("input", updateProgressBar);
+        field.addEventListener("change", updateProgressBar); // For checkboxes and radio buttons
+    });
+
+    // Initial call to set progress on page load
+    updateProgressBar();
 
 });

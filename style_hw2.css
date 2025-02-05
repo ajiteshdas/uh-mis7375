@@ -1,0 +1,282 @@
+/* Name: Ajitesh Shankar Das
+Name: Ajitesh Shankar Das
+PSID: 2415523
+Name of file: syle.css
+Date created: 19th August 2024
+Date updated: 20th September 2024
+Description: This is an css file to style the html form page.*/
+
+#header{
+	background-color: #1C3D5A;
+	width: 100%;
+	padding: 0px;
+	vertical-align: top;
+}
+
+h1{
+	color: #F0F7FF;
+}
+
+#date{
+	color: white;
+}
+
+img{
+	opacity: 90%;
+	width: 60%;
+}
+
+p{
+	align-content: center;
+}
+
+#main{
+	margin: auto;
+	width: 55%;
+}
+
+body{
+	/*background-color: #80D0F4;*/
+	background-color: #F0F7FF;
+	color: #1C3D5A;
+	font-family: sans-serif;
+}
+
+table{
+	border-spacing: 10px;
+}
+
+
+table #section1{
+	width: 100px;
+}
+
+
+td{
+	text-align: left;
+	text-wrap: nowrap;
+
+}
+
+input{
+	border-color: #D1D5DB;
+}
+
+input[type='date']{
+	width: 96.67%;
+}
+
+datalist{
+	display: flex;
+	color: #1C3D5A;
+	word-spacing: 30px;
+}
+
+
+#gender{
+	white-space: nowrap;
+}
+
+#left{
+	text-align: left;
+	float: left;
+}
+
+.right{
+	text-align: right;
+	float: right;
+}
+
+#contact{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.submit{
+	background-color: white;
+	color: black;
+	font-size: 100%;
+	padding: 8px;
+}
+
+.submit:hover{
+	background-color: #4CAF50;
+	color: white;
+	transition: 0.4s;
+	cursor: pointer; /*https://www.w3schools.com/cssref/pr_class_cursor.php*/
+}
+
+.reset-btn{
+	background-color: grey;
+	color: white;
+}
+
+.reset-btn:hover{
+	background-color: white;
+	color: black;
+	transition: 0.4s;
+	cursor: pointer;
+}
+
+href{
+	color: #00ACC1;
+}
+
+
+input[type="range"] {
+        width: 100%;
+    }
+.slider-container {
+    width: 300px;
+    margin: 20px;
+    text-align: left; /* Align to the left */
+}
+
+.health-slider {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 5px; /* Adjust spacing between ticks and slider */
+    font-size: 14px;
+}
+
+.slider-value {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.slider-wrapper input[type="range"] {
+    writing-mode: horizontal-tb; /* Ensure horizontal layout */
+    width: 100%;
+    margin: 0;
+}
+
+.others{
+	width: 200%;
+}
+
+#state{
+	width: 120%;
+	margin-right: 10px;
+}
+
+.mandatory{
+	color: #D32F2F;
+}
+
+.error-message{
+	color: red;
+	word-wrap: break-word;
+	width: 100px;
+}
+
+ #reviewInfo {
+        width: 100%;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+}
+
+.review-item {
+    display: grid;
+    grid-template-columns: 150px 1fr auto; /* Label, Value, Edit Button */
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.review-item span {
+    display: inline-block;
+    text-align: left;
+}
+
+.review-item .edit_button {
+    text-align: right;
+}
+
+.edit_button button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.edit_button button:hover {
+    background-color: #e0e0e0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+}
+
+.submit {
+    display: block;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.submit:hover {
+    background-color: green;
+    opacity: 70%;
+}
+
+.review_button{
+    display: block;
+    background-color: #007bff;
+    height: 30px;
+    width: 100px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.review_button:hover{
+	background-color: green;
+	opacity: 70%;
+
+}
+
+input[type="checkbox"]:focus, input[type="radio"]:focus {
+    outline: 2px solid #007bff; /* Blue outline for focus */
+    outline-offset: 2px;
+}
+
+p:focus {
+    outline: none; /* Remove default focus outline */
+    animation: highlight-animation 1.5s ease;
+}
+
+/* Define the keyframes for the brief highlight */
+@keyframes highlight-animation {
+    0% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.valid {
+        color: green;
+    }
+
+.invalid {
+    color: red;
+}
+
+.valid-ssn {
+    color: green; /* Display text in green color */
+    font-weight: bold; /* Optional: Make it bold for emphasis */
+}

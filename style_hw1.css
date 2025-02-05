@@ -1,0 +1,160 @@
+/* Name: Ajitesh Shankar Das
+Name: Ajitesh Shankar Das
+PSID: 2415523
+Name of file: syle.css
+Date created: 19th August 2024
+Date updated: 20th September 2024
+Description: This is an css file to style the html form page.*/
+
+#header{
+	background-color: #1C3D5A;
+	width: 100%;
+	padding: 0px;
+	vertical-align: top;
+}
+
+h1{
+	color: #F0F7FF;
+}
+
+#date{
+	color: white;
+}
+
+img{
+	opacity: 90%;
+	width: 60%;
+}
+
+p{
+	align-content: center;
+}
+
+#main{
+	margin: auto;
+	width: 55%;
+}
+
+body{
+	/*background-color: #80D0F4;*/
+	background-color: #F0F7FF;
+	color: #1C3D5A;
+	font-family: sans-serif;
+}
+
+table{
+	border-spacing: 10px;
+}
+
+
+table #section1{
+	width: 100px;
+}
+
+
+td{
+	text-align: left;
+	text-wrap: nowrap;
+
+}
+
+input{
+	border-color: #D1D5DB;
+}
+
+input[type='date']{
+	width: 96.67%;
+}
+
+datalist{
+	display: flex;
+	color: #1C3D5A;
+	word-spacing: 30px;
+}
+
+
+#gender{
+	white-space: nowrap;
+}
+
+#left{
+	text-align: left;
+	float: left;
+}
+
+.right{
+	text-align: right;
+	float: right;
+}
+
+#contact{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.submit{
+	background-color: white;
+	color: black;
+	font-size: 100%;
+	padding: 8px;
+}
+
+.submit:hover{
+	background-color: #4CAF50;
+	color: white;
+	transition: 0.4s;
+	cursor: pointer; /*https://www.w3schools.com/cssref/pr_class_cursor.php*/
+}
+
+.reset-btn{
+	background-color: grey;
+	color: white;
+}
+
+.reset-btn:hover{
+	background-color: white;
+	color: black;
+	transition: 0.4s;
+	cursor: pointer;
+}
+
+href{
+	color: #00ACC1;
+}
+
+.slider-container {
+            position: relative;
+            width: 300px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+input[type="range"] {
+            width: 100%;
+        }
+
+.health-slider {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            top: 30px; /* Adjust this value to position the labels */
+        }
+.health-slider span {
+            text-align: center;
+            width: 10%; /* Adjust width as necessary */
+        }
+
+.others{
+	width: 200%;
+}
+
+#state{
+	width: 120%;
+	margin-right: 10px;
+}
+
+.mandatory{
+	color: #D32F2F;
+}
